@@ -1,17 +1,61 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+function App() {
+  return (
+    <div className="card">
+      <Avatar />
+      <div className="data">
+        <Intro />
+        {/* Should contain one Skill component
+        for each web dev skill that you have,
+        customized with props */}
+        <SkillList />
+      </div>
+    </div>
+  );
+}
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function Avatar() {
+  return (
+    <img
+      className="avatar"
+      src="img/oagf.jpg"
+      alt="Octavia Alexandra García Figuereo"
+    />
+  );
+}
+
+function Intro() {
+  return (
+    <div>
+      <h1>Octavia García</h1>
+      <p>
+        Programming beginner. Learning what's needed to become a Fronted
+        Developer.
+      </p>
+    </div>
+  );
+}
+
+function SkillList() {
+  return (
+    <div className="skill-list">
+      <Skill skill="HTML & CSS" color="orange" />
+      <Skill skill="JavaScript" color="yellow" />
+      <Skill skill="React" color="blue" />
+    </div>
+  );
+}
+
+function Skill(props) {
+  return (
+    <div className="skill" style={{ backgroundColor: props.color }}>
+      <span>{props.skill}</span>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<App />);
